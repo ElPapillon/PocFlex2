@@ -1,7 +1,7 @@
 
 
 export class AppError{
-    Message: string;
+   public Message: string;
 
     constructor(message: string){
         message = this.Message;
