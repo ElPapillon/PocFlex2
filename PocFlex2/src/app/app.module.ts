@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecordListComponent } from './record-list/record-list.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -14,7 +16,8 @@ import { RecordListComponent } from './record-list/record-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

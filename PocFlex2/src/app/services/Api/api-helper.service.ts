@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators'
+import { HttpError } from 'src/app/models/classes/HttpError';
+
+export class CustomError {
+  constructor(public message: string) {}
+}
 
 
 @Injectable({
@@ -9,15 +14,26 @@ import { map } from 'rxjs/operators'
 })
 export class ApiHelperService {
 
-  public apiUrl = "http://192.168.2.144:1234/api"
+  public apiUrl = "http://10.0.0.71:1234/api"
 
   constructor(private http: HttpClient) {
    }
 
-   protected get(route: string, options?: any): Observable<Response> {
-     return this.http.get(route, options).pipe(
-       map(response => JSON.parse(JSON.stringify(response)))
-     )
+   protected get(route: string, options?: any): Observable<ArrayBuffer> {
+
+      options = { observe: 'response' };
+
+     return this.http.get(this.getUrl(route), options).pipe(
+       catchError(error => {
+        return Observable.throw(new CustomError(error))
+        }))
    }
 
+   handleError(error) {
+     console.log(error)
+   }
+
+   getUrl(route) {
+      return this.apiUrl + route
+   }
 }
