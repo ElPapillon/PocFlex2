@@ -22,7 +22,5 @@ export class RecordService {
       }),
       (response) => response
     )
-    var a: number[];
-    Array
   }
 }
