@@ -20,7 +20,7 @@ export class RecordService {
       catchError((error: AppError) => {
         return Observable.throw(error)
       }),
-      map((response: IRecords[]) => {return response})
+      (response) => response
     )
   }
 }
