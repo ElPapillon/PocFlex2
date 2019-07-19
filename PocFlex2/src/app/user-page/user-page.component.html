@@ -1,0 +1,12 @@
+<div class="example-container">
+    <h1>Login</h1>
+    <form #f="ngForm" (ngSubmit)="log(f.value)">
+        <mat-form-field>
+            <input matInput type="text" placeholder="Username" #username="ngModel" [(ngModel)]="user.Username" name="Username" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" type="text" #password="ngModel" [(ngModel)]="user.Password" name="Password" required>
+        </mat-form-field>
+        <button mat-stroked-button color="primary">Login</button>
+    </form>
+</div>
