@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecordApiService } from './services/Api/record-api.service';
+import { RecordService } from './services/Managers/record.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,10 @@ import { RecordApiService } from './services/Api/record-api.service';
 export class AppComponent implements OnInit  {
   title = 'PocFlex2';
 
-  constructor(private service: RecordApiService) {
+  constructor(private service: RecordService) {
   }
 
   ngOnInit() {
-    this.service.fetchRecords("/record").subscribe();
+    this.service.GetRecords();
   }
 }

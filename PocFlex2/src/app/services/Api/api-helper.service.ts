@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import { map, catchError, tap } from 'rxjs/operators'
 import { HttpError } from 'src/app/models/classes/HttpError';
 
@@ -19,13 +19,11 @@ export class ApiHelperService {
   constructor(private http: HttpClient) {
    }
 
-   protected get(route: string, options?: any): Observable<ArrayBuffer> {
+   protected get(route: string, options?: any): Observable<HttpResponse<any> | Observable<HttpError>> {
 
-      options = { observe: 'response' };
-
-     return this.http.get(this.getUrl(route), options).pipe(
+     return this.http.get(this.getUrl(route), {observe: "response"}).pipe(
        catchError(error => {
-        return Observable.throw(new CustomError(error))
+        return Observable.throw(new HttpError(error.message, error.Status))
         }))
    }
 
