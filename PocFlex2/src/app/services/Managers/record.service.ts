@@ -22,5 +22,7 @@ export class RecordService {
       }),
       map((response: IRecords[]) => {return response})
     )
+    var a: number[];
+    Array
   }
 }
