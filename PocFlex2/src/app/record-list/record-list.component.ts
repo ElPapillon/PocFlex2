@@ -9,19 +9,24 @@ import { AppError } from '../models/classes/AppError';
   styleUrls: ['./record-list.component.css']
 })
 export class RecordListComponent implements OnInit {
+  records$: IRecords[];
 
-  constructor( public RecordService: RecordListService) { }
+  constructor(public RecordService: RecordListService) { }
 
-  public OnRefresh(){
+  public OnRefresh() {
     this.RecordService.GetRecord().subscribe(
       (Records: IRecords[]) => {
-        console.log(Records)
+        this.records$ = Records
+        console.log(this.records$)
       },
-      (error: AppError) => {}
+      (error: AppError) => { }
     )
+
   }
 
+
   ngOnInit() {
+    this.OnRefresh()
   }
 
 }

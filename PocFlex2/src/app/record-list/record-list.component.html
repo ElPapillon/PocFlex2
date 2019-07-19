@@ -1,2 +1,36 @@
-<p>record-list works!</p>
 <button (click)='OnRefresh()'> refresh me ! </button>
+
+<!-- <ul *ngFor="let record of records$">
+    <li>{{record.Id}}</li>
+    <li>{{record.ChannelName}}</li>
+</ul> -->
+
+<table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ChannelID</th>
+                <th>ChannelName</th>
+                <th>Called</th>
+                <th>Caller</th>
+                <th>Duration</th>
+                <th>Start</th>
+                <th>Stop</th>
+
+
+            </tr>
+        </thead>
+        <tbody  *ngFor="let record of records$">
+            <tr>
+                <td>{{record.Id}}</td>
+                <td>{{record.ChannelId}}</td>
+                <td>{{record.ChannelName}}</td>
+                <td>{{record.CalledPartyNumber}}</td>
+                <td>{{record.CallerPartyNumber}}</td>
+                <td>{{record.Duration}}</td>
+                <td>{{record.StartDateTime}}</td>
+                <td>{{record.StopDateTime}}</td>
+
+            </tr>
+        </tbody>
+    </table>
