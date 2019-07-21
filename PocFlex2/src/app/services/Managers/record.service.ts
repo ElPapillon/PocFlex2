@@ -16,11 +16,11 @@ export class RecordService {
 
   public GetRecords(): Observable<IRecords[] | Observable<AppError>> {
     console.log("test")
-    return this.recordApi.fetchRecords('/record').pipe(
+    return this.recordApi.fetchRecords('/records').pipe(
       catchError((error: AppError) => {
+        console.log(error)
         return Observable.throw(error)
-      }),
-      (response) => response
+      })
     )
   }
 }

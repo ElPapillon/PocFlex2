@@ -1,6 +1,6 @@
 <div class="example-container">
     <h1>Login</h1>
-    <form #f="ngForm" (ngSubmit)="log(f.value)">
+    <form #f="ngForm" (ngSubmit)="login(f.value)">
         <mat-form-field>
             <input matInput type="text" placeholder="Username" #username="ngModel" [(ngModel)]="user.Username" name="Username" required>
         </mat-form-field>
@@ -10,3 +10,4 @@
         <button mat-stroked-button color="primary">Login</button>
     </form>
 </div>
+<p> User = {{ user$ | async}}</p>

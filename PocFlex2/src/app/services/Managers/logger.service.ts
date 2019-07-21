@@ -9,7 +9,7 @@ export class LoggerService {
   constructor() { }
 
   public LogError(error: AppError): void{
-    console.error(error.Message)
+    console.error(error.getMessage())
   }
 
 }

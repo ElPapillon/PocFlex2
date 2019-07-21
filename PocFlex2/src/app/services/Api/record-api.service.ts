@@ -20,7 +20,8 @@ export class RecordApiService extends ApiHelperService {
   fetchRecords(route): Observable<IRecords[] | Observable<AppError>> {
     return this.get(route).pipe(
       catchError((error: HttpError) => {
-        return Observable.throw(new AppError(error.Message))
+        //return Observable.throw(new AppError('Data error', 0))
+        return Observable.throw(error as AppError);
       }), 
       map((response: HttpResponse<any>) => {
         return response.body as IRecords[]
