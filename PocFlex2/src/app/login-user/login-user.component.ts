@@ -12,16 +12,19 @@ export class LoginUserComponent implements OnInit {
 
   constructor(public LoginService: LoginUserComponentService) { }
 
-  private _User: IUser = {
-    Username : "Assmann",
-    Password: "32854"
-  };
+
+  public hide: any;
+  public User: IUser = {
+    Username: null,
+    Password: null
+  }
 
   public ConnexionState: string = null;
 
 
-  Login(){
-    this.LoginService.Login(this._User).subscribe(
+  public Login(){
+    console.log(this.User)
+    this.LoginService.Login(this.User).subscribe(
       (Log: void) => {
         return this.ConnexionState = "Connecter"
       },
@@ -31,7 +34,14 @@ export class LoginUserComponent implements OnInit {
     )
   }
 
+  MaskPassword(){
+   this.hide = true;
+  }
+
   ngOnInit() {
   }
+
+}
+export class FormFieldPrefixSuffixExample {
 
 }

@@ -10,6 +10,9 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatIconModule} from '@angular/material/icon'
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -27,6 +30,9 @@ import {MatInputModule} from '@angular/material/input'
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
