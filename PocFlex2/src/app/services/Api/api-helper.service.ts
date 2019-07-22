@@ -3,6 +3,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { map, catchError, tap } from 'rxjs/operators'
 import { HttpError } from 'src/app/models/classes/HttpError';
+import { IUser } from 'src/app/models/interfaces/User.Model';
+import { stringify } from '@angular/compiler/src/util';
+import { AppError, ErrorItem } from 'src/app/models/classes/AppError';
 
 export class CustomError {
   constructor(public message: string) {}
@@ -31,7 +34,14 @@ export class ApiHelperService {
      console.log(error)
    }
 
-   getUrl(route) {
+   getUrl(route : string) {
       return this.apiUrl + route
    }
+  protected post(route : string, body?: any, option?: any): Observable<HttpResponse<any> | Observable<HttpError>> {
+    return this.http.post(this.getUrl(route), body, {observe: "response"}).pipe(
+      catchError(error => {
+       return Observable.throw(new HttpError(error.message, error.Status))
+       }))
+
+  }
 }

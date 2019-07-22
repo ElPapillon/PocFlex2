@@ -7,6 +7,9 @@ import { RecordListComponent } from './record-list/record-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatInputModule} from '@angular/material/input'
 
 
 
@@ -21,7 +24,9 @@ import { RegisterUserComponent } from './register-user/register-user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

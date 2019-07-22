@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginUserComponentService } from './login-user-component.service';
+import { IUser } from '../models/interfaces/User.Model';
+import { AppError } from '../models/classes/AppError';
 
 @Component({
   selector: 'app-login-user',
@@ -7,7 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public LoginService: LoginUserComponentService) { }
+
+  private _User: IUser = {
+    Username : "Assmann",
+    Password: "32854"
+  };
+
+  public ConnexionState: string = null;
+
+
+  Login(){
+    this.LoginService.Login(this._User).subscribe(
+      (Log: void) => {
+        return this.ConnexionState = "Connecter"
+      },
+      (error: AppError) => {
+       return this.ConnexionState = "Déconnecter"
+      }
+    )
+  }
 
   ngOnInit() {
   }

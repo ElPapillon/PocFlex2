@@ -15,7 +15,6 @@ export class RecordService {
 
 
   public GetRecords(): Observable<IRecords[] | Observable<AppError>> {
-    console.log("test")
     return this.recordApi.fetchRecords('/record').pipe(
       catchError((error: AppError) => {
         return Observable.throw(error)
