@@ -38,4 +38,6 @@ export class ApiHelperService {
   getUrl(route) {
     return this.apiUrl + route
   }
+
+
 }

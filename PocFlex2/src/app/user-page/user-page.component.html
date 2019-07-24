@@ -1,13 +1,40 @@
-<div class="example-container">
-    <h1>Login</h1>
-    <form #f="ngForm" (ngSubmit)="login(f.value)">
-        <mat-form-field>
-            <input matInput type="text" placeholder="Username" #username="ngModel" [(ngModel)]="user.Username" name="Username" required>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Enter your password" type="text" #password="ngModel" [(ngModel)]="user.Password" name="Password" required>
-        </mat-form-field>
-        <button mat-stroked-button color="primary">Login</button>
-    </form>
+<div class="container" style='margin-top: 30px;'>
+    <div class="row">
+
+        <div class="col">
+            <div class="example-container">
+                <h1>Login</h1>
+                <form #f="ngForm" (ngSubmit)="login(f.value)">
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Username" #username="ngModel"
+                            [(ngModel)]="user.Username" name="Username" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Enter your password" type="text" #password="ngModel"
+                            [(ngModel)]="user.Password" name="Password" required>
+                    </mat-form-field>
+                    <button mat-stroked-button color="primary">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan='2'>Username
+                            <button type="button" (click)='getUsers()' style='margin-left: 10px;'
+                                class="btn btn-outline-info btn-sm">Fetch Users</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of (users$ | async)">
+                        <td colspan='2'>{{user.Username}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 </div>
-<p> User = {{ user$ | async}}</p>

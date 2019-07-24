@@ -7,6 +7,6 @@ export interface IRecords{
     StartDateTime: Date;
     StopDateTime: Date;
     Duration: number;
-    CallerPartiNumber: string;
-    CalledPartiNumber: string;
+    CallerPartyNumber: string;
+    CalledPartyNumber: string;
 }

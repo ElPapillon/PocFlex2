@@ -1,2 +1,30 @@
-<p>record-list works!</p>
-<button (click)='OnRefresh()'> refresh me ! </button>
+<div class="btn btn-primary" (click)='OnRefresh()'>Get records</div>
+<p>Last update : {{lastTime | number:'1.0-1'}}</p>
+<div class="btn btn-primary login" (click)='GoToLogin()'>Go to login</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Called Party Number</th>
+            <th colspan='2'>Caller Party Number</th>
+            <th colspan='2'>Channel Id</th>
+            <th colspan='2'>Channel Name</th>
+            <th colspan='2'>Duration</th>
+            <th colspan='2'>Record Id</th>
+            <th colspan='3'>Start Date Time</th>
+            <th colspan='3'>Stop Date Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of (nico | async)">
+            <td colspan='2'>{{record.CallerPartyNumber}}</td>
+            <td colspan='2'>{{record.CallerPartyNumber}}</td>
+            <td colspan='2'>{{record.ChannelId}}</td>
+            <td colspan='2'>{{record.ChannelName}}</td>
+            <td colspan='2'>{{record.Duration}}</td>
+            <td colspan='2'>{{record.Id}}</td>
+            <td colspan='3'>{{record.StartDateTime | date:'fullDate':'fr'}}</td>
+            <td colspan='3'>{{record.StopDateTime | date:'fullDate'}}</td>
+        </tr>
+    </tbody>
+</table>

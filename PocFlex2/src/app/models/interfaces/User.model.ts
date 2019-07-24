@@ -1,4 +1,4 @@
-export class User {
+export class IUser {
     Username: string
     Password: String
     constructor(obj?: any) {
