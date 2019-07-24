@@ -16,10 +16,11 @@ export interface IRecordModel  {
 
 export class RecordState{
     @Action(GetRecord)
-    add({getState, patchState}: StateContext<IRecordModel>, {payload}: GetRecord) {
-        const state = getState();
-        patchState({
-            Records : [...state.Records, ...payload]
+    add(ctx: StateContext<IRecordModel>, {payload}: GetRecord) {
+        const state = ctx.getState();
+        ctx.setState({
+           ...state, 
+           Records: payload
         })
     }
 

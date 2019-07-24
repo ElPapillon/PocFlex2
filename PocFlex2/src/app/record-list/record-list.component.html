@@ -3,9 +3,9 @@
 <!-- <ul *ngFor="let record of records$">
     <li>{{record.Id}}</li>
     <li>{{record.ChannelName}}</li>
-</ul> --> 
+</ul> -->
 
-<table>
+<!-- <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -33,4 +33,50 @@
 
             </tr>
         </tbody>
-    </table>
+    </table> -->
+
+<mat-tab-group>
+
+    <mat-tab label="ID">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.Id}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="ChannelID">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.ChannelId}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="ChannelName">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.ChannelName}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="Called">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.CalledPartyNumber}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="Caller">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.CallerPartyNumber}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="Duration">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.Duration}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="Start">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.StartDateTime}}
+        </mat-list-item>
+    </mat-tab>
+    <mat-tab label="Stop">
+        <mat-list-item *ngFor="let record of records$">
+            {{record.StopDateTime}}
+        </mat-list-item>
+    </mat-tab>
+
+
+</mat-tab-group>
