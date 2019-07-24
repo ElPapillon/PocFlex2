@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "@ngxs/devtools-plugin": "^3.5.0",
     "@ngxs/logger-plugin": "^3.5.0-dev.master-07d305f",
     "@ngxs/store": "^3.5.0-dev.master-07d305f",
     "hammerjs": "^2.0.8",

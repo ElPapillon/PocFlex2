@@ -14,7 +14,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon'
 import { FormsModule } from '@angular/forms';
-import { Flex2State } from './store/recordState';
+import { RecordState } from './store/Record/recordState';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
 
 
 
@@ -25,7 +27,7 @@ import { Flex2State } from './store/recordState';
     AppComponent,
     RecordListComponent,
     LoginUserComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +39,10 @@ import { Flex2State } from './store/recordState';
     MatIconModule,
     FormsModule,
     NgxsModule.forRoot([
-      Flex2State
+      RecordState
     ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

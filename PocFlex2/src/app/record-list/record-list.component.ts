@@ -14,12 +14,21 @@ export class RecordListComponent implements OnInit {
   constructor(public RecordService: RecordListService) { }
 
   public OnRefresh() {
-    this.RecordService.GetRecord().subscribe(
+    // this.RecordService.GetRecord().subscribe(
+    //   (Records: IRecords[]) => {
+    //     this.records$ = Records
+    //     console.log(this.records$)
+    //   },
+    //   (error: AppError) => { }
+    // )
+
+    this.RecordService.GetRecordByStore().subscribe(
       (Records: IRecords[]) => {
         this.records$ = Records
         console.log(this.records$)
       },
-      (error: AppError) => { }
+      (error: AppError) => {}
+  
     )
 
   }

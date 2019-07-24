@@ -21,4 +21,12 @@ export class RecordListService {
       }),
     )
  }
+ public GetRecordByStore(){
+   return this.RecordService.GetRecordByStore().pipe(
+    catchError((error: AppError) => {
+      this.LoggerService.LogError(error);
+      return Observable.throw(error)
+    })
+   )
+ }
 }

@@ -34,9 +34,7 @@ export class LoginUserComponent implements OnInit {
     )
   }
 
-  MaskPassword(){
-   this.hide = true;
-  }
+ 
 
   ngOnInit() {
   }
