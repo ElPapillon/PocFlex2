@@ -19,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon'
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatListModule } from '@angular/material/list'
-
+import { MatTableModule } from '@angular/material/table'
+import { MatButtonModule} from '@angular/material/button'
+import { UserState } from './store/Users/UsersState';
 
 
 @NgModule({
@@ -39,12 +41,15 @@ import { MatListModule } from '@angular/material/list'
     MatIconModule,
     FormsModule,
     NgxsModule.forRoot([
-      RecordState
+      RecordState,
+      UserState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     MatTabsModule,
     MatListModule,
+    MatTableModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,7 @@ import { IRecords } from 'src/app/models/interfaces/Record.Model';
 import { AppError } from 'src/app/models/classes/AppError';
 import { LoggerService } from './logger.service';
 import { catchError, withLatestFrom, switchMap } from 'rxjs/operators';
-import { Store, Select } from '@ngxs/store';
-import { RecordState } from 'src/app/store/Record/recordState';
+import { Store } from '@ngxs/store';
 import { GetRecord } from 'src/app/store/Record/recordAction';
 import { of } from 'rxjs';
 
@@ -17,11 +16,11 @@ export class RecordService {
 
   constructor(public recordApi: RecordApiService, public logger: LoggerService, public store: Store) { }
 
-  private route: string = '/record'
+  private _route: string = '/record'
 
   public GetRecords(): Observable<IRecords[] | Observable<AppError>> {
     console.log('Record Service')
-    return this.recordApi.fetchRecords(this.route).pipe(
+    return this.recordApi.fetchRecords(this._route).pipe(
       switchMap((record: IRecords[]) => {
         return this.store.dispatch(new GetRecord(record)).pipe(
           withLatestFrom(this.store.select(state => state.RecordStore.Records as IRecords[])),
@@ -40,17 +39,3 @@ export class RecordService {
    return this.store.select(state => state.RecordStore.Records as IRecords[])
   }
 }
-// console.log('Record Service')
-// return this.recordApi.fetchRecords(this.route).pipe(
-//   switchMap((record: IRecords[]) => {
-//     return this.store.dispatch(new GetRecord(record)).pipe(
-//       withLatestFrom(this.store.select(state => state.RecordStore.Records as IRecords[])),
-//       switchMap(([a,b]) => {
-//         console.log(b)
-//         return of(b)}),
-//     )
-//   }),
-//   catchError((error: AppError) => {
-//     return Observable.throw(error)
-//   })
-// )

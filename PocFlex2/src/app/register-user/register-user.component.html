@@ -1,11 +1,34 @@
-<p>{{RegisterState}}</p>
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <div class="col-2">
+            <form>
+                <p>Login</p>
+                <input [(ngModel)]="User.Username" name="Login">
+            </form>
+            <form style="padding-bottom: 10px">
+                <p>Password</p>
+                <input [(ngModel)]="User.Password" name="Password">
+            </form>
+            <button (click)="Register()" style="margin-bottom: 10px">Click me to Regist</button>
+            <button (click)="GoToLogin()" style="margin-bottom: 10px">Click to go Login</button>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-9">
+            <button mat-button (click)="GetUser()">Get Users</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Users</th>
 
-<form>
-    <p>Login</p>
-    <input [(ngModel)]="User.Username" name="Login">
-</form>
-<form>
-    <p>Password</p>
-    <input [(ngModel)]="User.Password" name="Password">
-</form>
-<button (click)="Register()">Click me to Regist</button>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of _Users$">
+                        <th scope="row"> {{user.Username}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

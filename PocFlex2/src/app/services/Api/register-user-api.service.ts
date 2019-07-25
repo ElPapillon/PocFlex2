@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { AppError } from 'src/app/models/classes/AppError';
 import { catchError, map } from 'rxjs/operators';
 import { HttpError } from 'src/app/models/classes/HttpError';
+import { IUser } from 'src/app/models/interfaces/User.Model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,17 @@ export class RegisterUserApiService extends ApiHelperService{
       }),
       map((response: HttpResponse<any>) => {
         return response.body as void
+      })
+    )
+  }
+
+  public FetchUser(route: string): Observable< AppError | IUser[]>{
+    return this.get(route).pipe(
+      catchError((error: HttpError) => {
+        return Observable.throw(error as AppError)
+      }),
+      map((response: HttpResponse<any>) =>  {
+        return response.body as IUser[]
       })
     )
   }

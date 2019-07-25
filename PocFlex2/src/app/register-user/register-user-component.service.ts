@@ -20,4 +20,13 @@ export class RegisterUserComponentService {
       })
     )
   }
+
+  public GetUser(){
+    return this.RegisterService.GetUser().pipe(
+      catchError((error) => {
+        this.LoggerService.LogError(error);
+        return Observable.throw(error)
+      })
+    )
+  }
 }

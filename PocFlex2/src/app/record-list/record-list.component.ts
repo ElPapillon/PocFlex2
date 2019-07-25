@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordListService } from './record-list.service';
 import { IRecords } from '../models/interfaces/Record.Model';
 import { AppError } from '../models/classes/AppError';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-record-list',
@@ -12,7 +13,7 @@ export class RecordListComponent implements OnInit {
   private _records$: IRecords[];
   private _getStore: boolean;
 
-  constructor(public RecordService: RecordListService) { }
+  constructor(public RecordService: RecordListService, private _router: Router) { }
 
   public SetGetStore() { 
     this._getStore = !this._getStore;
@@ -33,5 +34,7 @@ export class RecordListComponent implements OnInit {
     this.OnRefresh();
     this._getStore = false;
   }
-
+  public Disconnect(){
+    this._router.navigate([''])
+  }
 }

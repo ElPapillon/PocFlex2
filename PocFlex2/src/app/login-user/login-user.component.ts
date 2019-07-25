@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginUserComponentService } from './login-user-component.service';
 import { IUser } from '../models/interfaces/User.Model';
 import { AppError } from '../models/classes/AppError';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-user',
@@ -10,7 +11,7 @@ import { AppError } from '../models/classes/AppError';
 })
 export class LoginUserComponent implements OnInit {
 
-  constructor(public LoginService: LoginUserComponentService) { }
+  constructor(public LoginService: LoginUserComponentService, public router: Router) { }
 
 
   public hide: any;
@@ -19,21 +20,24 @@ export class LoginUserComponent implements OnInit {
     Password: null
   }
 
-  public ConnexionState: string = null;
+  public ConnexionState: boolean = false;
 
 
   public Login(){
     console.log(this.User)
     this.LoginService.Login(this.User).subscribe(
       (Log: void) => {
-        return this.ConnexionState = "Connecter"
+        this.router.navigate(['/record-list'])
+        return this.ConnexionState = true
       },
       (error: AppError) => {
-       return this.ConnexionState = "Déconnecter"
+       return this.ConnexionState = false
       }
     )
   }
-
+  public GoToRegister(){
+    this.router.navigate(['register'])
+  }
  
 
   ngOnInit() {
