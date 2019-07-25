@@ -20,15 +20,6 @@ export class RecordService {
   private route: string = '/record'
 
   public GetRecords(): Observable<IRecords[] | Observable<AppError>> {
-    return this.recordApi.fetchRecords(this.route).pipe(
-      catchError((error: AppError) => {
-        return Observable.throw(error)
-      }),
-      (response) => response
-    )
-  }
-
-  public GetRecordByStore(){
     console.log('Record Service')
     return this.recordApi.fetchRecords(this.route).pipe(
       switchMap((record: IRecords[]) => {
@@ -44,4 +35,22 @@ export class RecordService {
       })
     )
   }
+
+  public GetRecordByStore(){
+   return this.store.select(state => state.RecordStore.Records as IRecords[])
+  }
 }
+// console.log('Record Service')
+// return this.recordApi.fetchRecords(this.route).pipe(
+//   switchMap((record: IRecords[]) => {
+//     return this.store.dispatch(new GetRecord(record)).pipe(
+//       withLatestFrom(this.store.select(state => state.RecordStore.Records as IRecords[])),
+//       switchMap(([a,b]) => {
+//         console.log(b)
+//         return of(b)}),
+//     )
+//   }),
+//   catchError((error: AppError) => {
+//     return Observable.throw(error)
+//   })
+// )

@@ -13,8 +13,8 @@ export interface IRecordModel  {
         Records: []
     }
 })
-
 export class RecordState{
+    
     @Action(GetRecord)
     add(ctx: StateContext<IRecordModel>, {payload}: GetRecord) {
         const state = ctx.getState();

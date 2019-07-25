@@ -9,33 +9,29 @@ import { AppError } from '../models/classes/AppError';
   styleUrls: ['./record-list.component.css']
 })
 export class RecordListComponent implements OnInit {
-  records$: IRecords[];
+  private _records$: IRecords[];
+  private _getStore: boolean;
 
   constructor(public RecordService: RecordListService) { }
 
+  public SetGetStore() { 
+    this._getStore = !this._getStore;
+  }
+
   public OnRefresh() {
-    // this.RecordService.GetRecord().subscribe(
-    //   (Records: IRecords[]) => {
-    //     this.records$ = Records
-    //     console.log(this.records$)
-    //   },
-    //   (error: AppError) => { }
-    // )
-
-    this.RecordService.GetRecordByStore().subscribe(
+    this.RecordService.GetRecord(this._getStore).subscribe(
       (Records: IRecords[]) => {
-        this.records$ = Records
-        console.log(this.records$)
+        this._records$ = Records
+        console.log(this._records$)
       },
-      (error: AppError) => {}
-  
+      (error: AppError) => { }
     )
-
   }
 
 
   ngOnInit() {
-    this.OnRefresh()
+    this.OnRefresh();
+    this._getStore = false;
   }
 
 }
