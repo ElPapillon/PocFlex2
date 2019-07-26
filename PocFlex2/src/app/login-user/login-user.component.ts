@@ -14,7 +14,7 @@ export class LoginUserComponent implements OnInit {
   constructor(public LoginService: LoginUserComponentService, public router: Router) { }
 
 
-  public hide: any;
+
   public User: IUser = {
     Username: null,
     Password: null
@@ -23,27 +23,26 @@ export class LoginUserComponent implements OnInit {
   public ConnexionState: boolean = false;
 
 
-  public Login(){
-    console.log(this.User)
+  public Login(): void {
+    // console.log(this.User)
     this.LoginService.Login(this.User).subscribe(
       (Log: void) => {
         this.router.navigate(['/record-list'])
         return this.ConnexionState = true
       },
       (error: AppError) => {
-       return this.ConnexionState = false
+        return this.ConnexionState = false
       }
     )
   }
-  public GoToRegister(){
+
+
+  public GoToRegister() {
     this.router.navigate(['register'])
   }
- 
+
 
   ngOnInit() {
   }
-
-}
-export class FormFieldPrefixSuffixExample {
 
 }

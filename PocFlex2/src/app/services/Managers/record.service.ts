@@ -35,7 +35,7 @@ export class RecordService {
     )
   }
 
-  public GetRecordByStore(){
+  public GetRecordByStore(): Observable<IRecords[]>{
    return this.store.select(state => state.RecordStore.Records as IRecords[])
   }
 }

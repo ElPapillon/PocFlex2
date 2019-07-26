@@ -10,15 +10,15 @@ import { IUser } from 'src/app/models/interfaces/User.Model';
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterUserApiService extends ApiHelperService{
+export class RegisterUserApiService extends ApiHelperService {
 
   constructor(http: HttpClient) {
     super(http)
   }
 
-  public PostRegister(route: string, body?: any): Observable< AppError | void>{
+  public PostRegister(route: string, body?: any): Observable<AppError | void> {
     return this.post(route, body).pipe(
-      catchError((error: HttpError) =>{
+      catchError((error: HttpError) => {
         return Observable.throw(error as AppError)
       }),
       map((response: HttpResponse<any>) => {
@@ -27,12 +27,12 @@ export class RegisterUserApiService extends ApiHelperService{
     )
   }
 
-  public FetchUser(route: string): Observable< AppError | IUser[]>{
+  public FetchUser(route: string): Observable<AppError | IUser[]> {
     return this.get(route).pipe(
       catchError((error: HttpError) => {
         return Observable.throw(error as AppError)
       }),
-      map((response: HttpResponse<any>) =>  {
+      map((response: HttpResponse<any>) => {
         return response.body as IUser[]
       })
     )

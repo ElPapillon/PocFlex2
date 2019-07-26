@@ -17,7 +17,7 @@ export class RecordApiService extends ApiHelperService {
     super(http)
   }
 
-  fetchRecords(route : string): Observable<IRecords[] | Observable<AppError>> {
+  public fetchRecords(route : string): Observable<IRecords[] | Observable<AppError>> {
     return this.get(route).pipe(
       catchError((error: HttpError) => {
         return Observable.throw(error as AppError)

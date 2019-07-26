@@ -17,7 +17,7 @@ export interface IUserModel {
 export class UserState {
 
     @Action(AddUsers)
-    addUser(ctx: StateContext<IUserModel>, {payload}: AddUsers){
+    public addUser(ctx: StateContext<IUserModel>, { payload }: AddUsers): void {
         const state = ctx.getState();
         ctx.setState({
             ...state,
@@ -26,8 +26,8 @@ export class UserState {
     }
 
     @Selector()
-    static GetUsertab(state: IUserModel) {
+    static GetUsertab(state: IUserModel): IUser[] {
         return state.Users as IUser[]
     }
 
-}
+} 

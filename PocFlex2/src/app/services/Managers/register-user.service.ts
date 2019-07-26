@@ -29,7 +29,8 @@ export class RegisterUserService {
         return this.store.dispatch(new AddUsers(user)).pipe(
           withLatestFrom(this.store.select(state => state.UserStore.Users as IUser[])),
           switchMap(([a, b]) => {
-            return of(b)}),
+            return of(b)
+          }),
         )
       }),
       catchError((error: AppError) => {

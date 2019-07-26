@@ -21,7 +21,7 @@ export class RecordListService {
           return Observable.throw(error)
         })
        )
-    }
+    };
     return this.RecordService.GetRecords().pipe(
       catchError((error: AppError) => {
         this.LoggerService.LogError(error);

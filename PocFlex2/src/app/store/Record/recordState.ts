@@ -16,7 +16,7 @@ export interface IRecordModel  {
 export class RecordState{
     
     @Action(GetRecord)
-    add(ctx: StateContext<IRecordModel>, {payload}: GetRecord) {
+    public add(ctx: StateContext<IRecordModel>, {payload}: GetRecord): void {
         const state = ctx.getState();
         ctx.setState({
            ...state, 
@@ -25,7 +25,7 @@ export class RecordState{
     }
 
     @Selector()
-    static GetRecordsTab(state: IRecordModel) {
+    static GetRecordsTab(state: IRecordModel): IRecords[] {
         return state.Records as IRecords[];
     }
 }
